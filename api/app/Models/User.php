@@ -17,4 +17,19 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    public function pastes()
+    {
+        return $this->hasMany(Paste::class);
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(PasteLike::class);
+    }
+
+    public function accessLogs()
+    {
+        return $this->hasMany(PasteAccessLog::class);
+    }
 }
