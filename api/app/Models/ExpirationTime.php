@@ -7,4 +7,5 @@ class ExpirationTime extends Model
 {
     protected $primaryKey = 'seconds';
     protected $fillable = ['seconds', 'label'];
+    public $timestamps = false;
 }
