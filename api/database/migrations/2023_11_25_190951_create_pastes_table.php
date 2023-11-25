@@ -12,14 +12,15 @@ return new class extends Migration
         Schema::create('pastes', function (Blueprint $table)
         {
             $table->id();
-            $table->foreignIdFor(User::class)->constrained();
-            $table->foreignIdFor(SyntaxHighlight::class)->constrained();
+            $table->foreignIdFor(User::class)->nullable()->constrained();
+            $table->foreignIdFor(SyntaxHighlight::class)->nullable()->constrained();
 
             $table->string('title', 50);
             $table->string('tags')->nullable();
             $table->text('content');
             $table->boolean('listable')->default(true);
             $table->string('password', 60)->nullable();
+            $table->timestamp('expiration')->index();
             $table->boolean('destroy_on_open')->default(false);
             $table->timestamp('created_at');
 
