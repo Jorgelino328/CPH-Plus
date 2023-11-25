@@ -14,7 +14,7 @@ class ExpirationTimeSeeder extends Seeder
             ['label' => '1 day'     , 'seconds' => 24  * 60 * 60     ],
             ['label' => '1 week'    , 'seconds' => 7   * 24 * 60 * 60],
             ['label' => '1 month'   , 'seconds' => 30  * 24 * 60 * 60],
-            ['label' => '1 year'    , 'seconds' => 360 * 24 * 60 * 60],
+            ['label' => '1 year'    , 'seconds' => 365 * 24 * 60 * 60],
         ]);
     }
 }
