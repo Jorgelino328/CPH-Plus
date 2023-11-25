@@ -10,7 +10,7 @@ return new class extends Migration
         Schema::create('expiration_times', function (Blueprint $table)
         {
             $table->unsignedInteger('seconds')->primary();
-            $table->string('label', 15);
+            $table->string('label', 15)->unique();
         });
     }
 

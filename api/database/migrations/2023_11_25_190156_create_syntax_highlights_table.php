@@ -10,8 +10,8 @@ return new class extends Migration
         Schema::create('syntax_highlights', function (Blueprint $table)
         {
             $table->id();
-            $table->string('label', 20);
-            $table->string('value', 20);
+            $table->string('label', 35)->unique();
+            $table->string('value', 25)->unique();
         });
     }
 
