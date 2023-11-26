@@ -26,14 +26,28 @@ class PasteFactory extends Factory
             ? Hash::make('password')
             : null;
 
+        $tagList = array_map(
+            fn () => $this->faker->unique(reset: true)->safeColorName(),
+            range(1, 5)
+        );
+        $tagsString = $this->faker->boolean(20)
+            ? implode(',', $tagList)
+            : null;
+
+        $expiration = $this->faker->boolean(20)
+            ? $this->faker->dateTimeBetween('now', '+1 years')
+            : null;
+
         return [
             'user_id'             => $user,
             'syntax_highlight_id' => $syntaxHighlight,
             'title'               => $this->faker->text(50),
             'content'             => $content,
+            'tags'                => $tagsString,
             'listable'            => $this->faker->boolean(90),
             'password'            => $password,
             'destroy_on_open'     => $this->faker->boolean(10),
+            'expiration'          => $expiration
         ];
     }
 }
