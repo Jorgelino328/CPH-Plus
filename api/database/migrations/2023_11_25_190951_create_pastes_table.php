@@ -17,10 +17,10 @@ return new class extends Migration
 
             $table->string('title', 50);
             $table->string('tags')->nullable();
-            $table->text('content');
+            $table->mediumText('content');
             $table->boolean('listable')->default(true);
             $table->string('password', 60)->nullable();
-            $table->timestamp('expiration')->index();
+            $table->timestamp('expiration')->nullable()->index();
             $table->boolean('destroy_on_open')->default(false);
             $table->timestamp('created_at');
 
