@@ -10,10 +10,10 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table)
         {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name', 50)->unique();
             $table->string('email')->unique();
             $table->string('profile_image', 32)->nullable();
-            $table->string('password', 60);
+            $table->char('password', 60);
             $table->timestamps();
         });
     }
