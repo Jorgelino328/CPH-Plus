@@ -3,10 +3,26 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PasteRequest;
 use App\Models\Paste;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class PasteController extends Controller
 {
+    public function show(Paste $paste, Request $request)
+    {
+        if ($paste->password && !Hash::check($request->password, $paste->password))
+        {
+            return response()->json([
+                'message' => 'Wrong paste password.'
+            ], 401);
+        }
+
+        $paste->tags = $paste->tags
+            ? explode(',', $paste->tags)
+            : null;
+        return response()->json($paste);
+    }
+
     public function create(PasteRequest $request)
     {
         $data = $request->validated();
