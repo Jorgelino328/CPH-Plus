@@ -18,10 +18,11 @@ class PasteController extends Controller
             ? \Carbon\Carbon::now()->addSeconds($request->seconds_to_expire)
             : null;
 
-        Paste::create($data);
+        $paste = Paste::create($data);
 
         return response()->json([
-            'message' => 'Paste has been successfully created.'
+            'message'   => 'Paste has been successfully created.',
+            'id'        => $paste->id
         ], 201);
     }
 
