@@ -10,11 +10,11 @@ class PasteFactory extends Factory
     public function definition(): array
     {
         $user = $this->faker->boolean(20)
-            ? User::inRandomOrder()->first()->id
+            ? User::inRandomOrder()->first()?->id
             : null;
 
         $syntaxHighlight = $this->faker->boolean(50)
-            ? SyntaxHighlight::inRandomOrder()->first()->id
+            ? SyntaxHighlight::inRandomOrder()->first()?->id
             : null;
 
         $content = $this->faker->paragraphs(
@@ -28,7 +28,7 @@ class PasteFactory extends Factory
 
         $tagList = array_map(
             fn () => $this->faker->unique()->safeColorName(),
-            range(1, 5)
+            range(1, rand(1, 10))
         );
         $tagsString = $this->faker->boolean(20)
             ? implode(',', $tagList)
