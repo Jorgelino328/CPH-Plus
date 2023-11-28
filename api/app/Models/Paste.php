@@ -21,8 +21,16 @@ class Paste extends Model
         'expiration',
         'destroy_on_open'
     ];
+    protected $with = [
+        'syntax_highlight',
+        'user'
+    ];
+    protected $casts = [
+        'created_at' => 'datetime:M jS, Y, H:i',
+        'expiration' => 'datetime:M jS, Y, H:i'
+    ];
 
-    public function syntaxHighlights()
+    public function syntax_highlight()
     {
         return $this->belongsTo(SyntaxHighlight::class);
     }
@@ -37,7 +45,7 @@ class Paste extends Model
         return $this->hasMany(PasteLike::class);
     }
 
-    public function accessLogs()
+    public function access_logs()
     {
         return $this->hasMany(PasteAccessLog::class);
     }
