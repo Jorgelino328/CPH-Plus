@@ -20,6 +20,14 @@ class PasteController extends Controller
         $paste->tags = $paste->tags
             ? explode(',', $paste->tags)
             : null;
+
+        $paste->access_logs()->create([
+            'paste_id'   => $paste->id,
+            'user_id'    => auth()->guard('sanctum')->id(),
+            'ip'         => $request->ip(),
+            'user_agent' => $request->header('User-Agent')
+        ]);
+
         return response()->json($paste);
     }
 
@@ -40,6 +48,18 @@ class PasteController extends Controller
             'message'   => 'Paste has been successfully created.',
             'id'        => $paste->id
         ], 201);
+    }
+
+    public function like(Paste $paste)
+    {
+        $paste->likes()->firstOrCreate([
+            'paste_id'  => $paste->id,
+            'user_id'   => auth()->id()
+        ]);
+
+        return response()->json([
+            'message' => 'Paste liked successfully.'
+        ]);
     }
 
     public function update(Paste $paste, PasteRequest $request)
