@@ -22,7 +22,6 @@ class PasteController extends Controller
             : null;
 
         $paste->access_logs()->create([
-            'paste_id'   => $paste->id,
             'user_id'    => auth()->guard('sanctum')->id(),
             'ip'         => $request->ip(),
             'user_agent' => $request->header('User-Agent')
