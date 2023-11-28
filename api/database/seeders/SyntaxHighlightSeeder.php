@@ -156,7 +156,6 @@ class SyntaxHighlightSeeder extends Seeder
             ['label' => 'Puppet'                     , 'value' => 'puppet'            ],
             ['label' => 'Python'                     , 'value' => 'python'            ],
             ['label' => 'Python profiler results'    , 'value' => 'profile'           ],
-            ['label' => 'Python REPL'                , 'value' => 'python-repl'       ],
             ['label' => 'Q#'                         , 'value' => 'qsharp'            ],
             ['label' => 'Q'                          , 'value' => 'k'                 ],
             ['label' => 'QML'                        , 'value' => 'qml'               ],
