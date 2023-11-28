@@ -7,6 +7,6 @@ class PasteSeeder extends Seeder
 {
     public function run(): void
     {
-        \App\Models\Paste::factory(200)->create();
+        \App\Models\Paste::factory(50)->create();
     }
 }
