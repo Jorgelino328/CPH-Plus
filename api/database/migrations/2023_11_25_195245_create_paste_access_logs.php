@@ -13,7 +13,7 @@ return new class extends Migration
         {
             $table->id();
             $table->foreignIdFor(Paste::class)->constrained();
-            $table->foreignIdFor(User::class)->constrained();
+            $table->foreignIdFor(User::class)->nullable()->constrained();
 
             $table->string('ip', 45);
             $table->string('user_agent');
