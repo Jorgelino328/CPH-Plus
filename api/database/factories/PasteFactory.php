@@ -27,7 +27,7 @@ class PasteFactory extends Factory
             : null;
 
         $tagList = array_map(
-            fn () => $this->faker->unique(reset: true)->safeColorName(),
+            fn () => $this->faker->unique()->safeColorName(),
             range(1, 5)
         );
         $tagsString = $this->faker->boolean(20)
@@ -37,6 +37,8 @@ class PasteFactory extends Factory
         $expiration = $this->faker->boolean(20)
             ? $this->faker->dateTimeBetween('now', '+1 years')
             : null;
+
+        $this->faker->unique(reset: true);
 
         return [
             'user_id'             => $user,
