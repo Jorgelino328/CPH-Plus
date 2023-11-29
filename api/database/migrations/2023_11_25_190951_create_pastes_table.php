@@ -13,8 +13,9 @@ return new class extends Migration
         {
             $table->id();
             $table->foreignIdFor(User::class)->nullable()->constrained();
-            $table->foreignIdFor(SyntaxHighlight::class)->nullable()->constrained();
-
+            $table->unsignedSmallInteger('syntax_highlight_id')->nullable();
+            $table->foreign('syntax_highlight_id')->references('id')->on('syntax_highlights');
+            
             $table->string('title', 50);
             $table->string('tags')->nullable();
             $table->mediumText('content');

@@ -9,7 +9,7 @@ return new class extends Migration
     {
         Schema::create('syntax_highlights', function (Blueprint $table)
         {
-            $table->id();
+            $table->smallIncrements('id');
             $table->string('label', 35)->unique();
             $table->string('value', 25)->unique();
         });
