@@ -17,10 +17,6 @@ class PasteController extends Controller
             ], 401);
         }
 
-        $paste->tags = $paste->tags
-            ? explode(',', $paste->tags)
-            : null;
-
         $paste->access_logs()->create([
             'user_id'    => auth()->guard('sanctum')->id(),
             'ip'         => $request->ip(),
@@ -34,7 +30,6 @@ class PasteController extends Controller
     {
         $data = $request->validated();
 
-        $data['tags']       = $request->tags ? implode(',', $request->tags) : null;
         $data['user_id']    = auth()->guard('sanctum')->id();
         $data['password']   = $request->password ? Hash::make($request->password) : null;
         $data['expiration'] = $request->seconds_to_expire
@@ -72,7 +67,6 @@ class PasteController extends Controller
 
         $data = $request->validated();
 
-        $data['tags']       = $request->tags ? implode(',', $request->tags) : null;
         $data['password']   = $request->password ? Hash::make($request->password) : null;
         $data['expiration'] = $request->seconds_to_expire
             ? \Carbon\Carbon::now()->addSeconds($request->seconds_to_expire)

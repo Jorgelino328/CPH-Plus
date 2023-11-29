@@ -8,6 +8,8 @@ class PasteRequest extends FormRequest
 {
     use Updatable;
 
+    const TAG_SEPARATOR_ALTERNATIVE = '‚';
+
     public function rules(): array
     {
         return $this->handleUpdate([
@@ -27,7 +29,7 @@ class PasteRequest extends FormRequest
     {
         $this->merge([
             'tags' => array_map(
-                fn ($value) => str_replace(',', '‚', $value),
+                fn ($value) => str_replace(',', self::TAG_SEPARATOR_ALTERNATIVE, $value),
                 $this->input('tags') ?? []
             )
         ]);

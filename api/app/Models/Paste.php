@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 
+use App\Casts\CommaSeparatedStringListCast;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,6 +27,7 @@ class Paste extends Model
         'user'
     ];
     protected $casts = [
+        'tags'       => CommaSeparatedStringListCast::class,
         'created_at' => 'datetime:M jS, Y, H:i',
         'expiration' => 'datetime:M jS, Y, H:i'
     ];
