@@ -58,7 +58,7 @@ const route = useRoute()
 
 const { data: paste } = await useAsyncData(
     'paste',
-    () => useApi('pastes/' + route.params.id))
+    () => useApi('pastes/' + route.params.id, { method: 'POST' }))
 
 function getTagColor(index: number): string
 {
