@@ -2,7 +2,7 @@
 
 A modern full-stack Pastebin clone built with Laravel (API) and Nuxt.js (Frontend). This project allows users to create, share, and manage text pastes with syntax highlighting and various expiration options.
 
-## 🚀 Features
+## Features
 
 - Create and share text pastes
 - Syntax highlighting support
@@ -11,7 +11,7 @@ A modern full-stack Pastebin clone built with Laravel (API) and Nuxt.js (Fronten
 - Modern responsive UI built with Vuetify
 - RESTful API with Laravel Sanctum authentication
 
-## 📋 Requirements
+## Requirements
 
 ### System Requirements
 
@@ -26,7 +26,7 @@ A modern full-stack Pastebin clone built with Laravel (API) and Nuxt.js (Fronten
 - **Redis**: For caching and session storage (recommended for production)
 - **Git**: For version control
 
-## 🛠️ Local Development Setup
+## Local Development Setup
 
 ### 1. Clone the Repository
 
@@ -133,140 +133,3 @@ npm run dev
 ```
 
 The frontend will be available at `http://localhost:3000`
-
-## 🚀 Production Deployment
-
-### Backend (Laravel)
-
-1. **Environment Setup**:
-   ```bash
-   cp .env.example .env
-   # Configure production settings
-   ```
-
-2. **Install Dependencies**:
-   ```bash
-   composer install --optimize-autoloader --no-dev
-   ```
-
-3. **Optimize for Production**:
-   ```bash
-   php artisan config:cache
-   php artisan route:cache
-   php artisan view:cache
-   php artisan migrate --force
-   ```
-
-### Frontend (Nuxt.js)
-
-1. **Build for Production**:
-   ```bash
-   npm run build
-   ```
-
-2. **Start Production Server**:
-   ```bash
-   npm run preview
-   ```
-
-Or generate static files:
-```bash
-npm run generate
-```
-
-## 📂 Project Structure
-
-```
-CPH-Plus/
-├── api/                 # Laravel Backend
-│   ├── app/            # Application code
-│   ├── config/         # Configuration files
-│   ├── database/       # Migrations, seeders, factories
-│   ├── routes/         # API routes
-│   └── ...
-├── front/              # Nuxt.js Frontend
-│   ├── components/     # Vue components
-│   ├── pages/          # Page components
-│   ├── composables/    # Composable functions
-│   ├── plugins/        # Nuxt plugins
-│   └── ...
-└── README.md
-```
-
-## 🔧 Development Commands
-
-### Backend (Laravel)
-
-```bash
-# Run tests
-php artisan test
-
-# Code formatting
-./vendor/bin/pint
-
-# Clear caches
-php artisan cache:clear
-php artisan config:clear
-php artisan route:clear
-php artisan view:clear
-
-# Database operations
-php artisan migrate:fresh --seed
-php artisan migrate:rollback
-```
-
-### Frontend (Nuxt.js)
-
-```bash
-# Development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Generate static site
-npm run generate
-
-# Preview production build
-npm run preview
-
-# Lint code
-npm run lint
-```
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-1. **Database Connection Error**:
-   - Verify database credentials in `.env`
-   - Ensure database server is running
-   - Check if database exists
-
-2. **Permission Errors**:
-   ```bash
-   chmod -R 775 storage/
-   chmod -R 775 bootstrap/cache/
-   ```
-
-3. **NPM Installation Issues**:
-   ```bash
-   rm -rf node_modules package-lock.json
-   npm install
-   ```
-
-4. **API CORS Issues**:
-   - Check `config/cors.php` configuration
-   - Verify frontend URL is allowed
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is open-sourced software licensed under the [MIT license](LICENSE).
